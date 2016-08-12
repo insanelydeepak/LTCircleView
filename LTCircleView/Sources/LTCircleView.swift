@@ -20,7 +20,7 @@ class LTCircleView: UIView {
     
     var reusableViews: [UILabel] = []
     var itemSize = 30
-    var spacingAngle = 30
+    var spacingAngle: Double = 40
     var views: [UIView] = []
     
     weak var dataSource: LTCircleViewDataSource!
@@ -62,7 +62,7 @@ class LTCircleView: UIView {
             self.reArrange()
             viewToAdd.alpha = 1
         }, completion: { finished in
-
+                
         })
     }
     
@@ -93,7 +93,7 @@ class LTCircleView: UIView {
         let indexAtCenter = count / 2
         let initialAngle = count % 2 == 0 ? spacingAngle / 2 : 0
         
-        let angle = (Double(index - indexAtCenter) * 30 + Double(initialAngle)) * M_PI / 180
+        let angle = (Double(index - indexAtCenter) * spacingAngle + Double(initialAngle)) * M_PI / 180
         let tx = CGFloat(sin(angle)) * radius
         let ty = CGFloat(cos(angle)) * radius
         
